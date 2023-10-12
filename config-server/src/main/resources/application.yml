@@ -1,6 +1,5 @@
 server:
   port: 8888
-
 spring:
   profiles:
     active: native
@@ -11,3 +10,9 @@ spring:
       server:
         native:
           search-locations: classpath:/configurations
+
+# Profiles define which configurations'll be used depending on the environment. Example: "development", "test", "production".
+# A "native" profile means that configurations are stored locally on the server, most often in files.
+
+# "classpath" indicates the location from where to fetch configuration files.
+# It means that the configuration files will be searched inside the application classpath.

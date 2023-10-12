@@ -1,0 +1,43 @@
+# Above all, you must run config, all the others
+
+### get a school list, listening port 8070 (school port, not gateway)
+GET http://localhost:8070/api/v1/schools
+Accept: application/json
+
+### get some school with its student list
+GET http://localhost:8222/api/v1/schools/with-students/1
+Accept: application/json
+
+### get a student list of some school
+GET http://localhost:8222/api/v1/students/school/1
+Accept: application/json
+
+### get a school list
+GET http://localhost:8222/api/v1/schools
+Accept: application/json
+
+### get a student list
+GET http://localhost:8222/api/v1/students
+Accept: application/json
+
+### add a new student
+POST http://localhost:8222/api/v1/students
+Content-Type: application/json
+
+{
+  "id": {{$random.integer()}},
+  "email": "{{$random.email}}",
+  "firstname": "{{$random.alphabetic()}}",
+  "lastname": "{{$random.alphabetic()}}",
+  "schoolId": {{$random.integer()}}
+}
+
+### add a new school
+POST http://localhost:8222/api/v1/schools
+Content-Type: application/json
+
+{
+  "id": {{$random.integer()}},
+  "name": "{{$random.integer()}}",
+  "email": "{{$random.email}}"
+}
