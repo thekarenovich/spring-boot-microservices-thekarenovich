@@ -1,0 +1,26 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8050
+spring:
+  application:
+    name: email-sender
+  mail:
+    host: smtp.gmail.com
+    username: thekhachik2021@gmail.com
+    password: tjbymsqalynymbcm
+    port: 587
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+management:
+  tracing:
+    sampling:
+      probability: 1.0

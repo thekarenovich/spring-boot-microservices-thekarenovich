@@ -20,6 +20,10 @@ spring:
           uri: http://localhost:8070
           predicates:
             - Path=/api/v1/schools/**
+        - id: email-sender
+          uri: http://localhost:8050
+          predicates:
+            - Path=/api/v1/mail/**
       # Here you can configure routes to route requests to different services.
       # There are two routes: students and schools, which route requests to the appropriate services on ports 8090 and 8070.
       # For example: GET http://localhost:8222/api/v1/schools -> GET http://localhost:8070/api/v1/schools

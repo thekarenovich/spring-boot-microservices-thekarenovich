@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: email-sender
+  mail:
+    host: smtp.gmail.com
+    username: thekhachik2021@gmail.com
+    password: tjbymsqalynymbcm
+    port: 587
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+  config:
+    import: optional:configserver:http://localhost:8888
