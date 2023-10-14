@@ -1,4 +1,4 @@
-# Above all, you must run config, all the others
+# Above all, you must run config, then all the others
 
 ### get a school list, listening port 8070 (school port, not gateway)
 GET http://localhost:8070/api/v1/schools
@@ -27,8 +27,8 @@ Content-Type: application/json
 {
   "id": {{$random.integer()}},
   "email": "{{$random.email}}",
-  "firstname": "{{$random.alphabetic()}}",
-  "lastname": "{{$random.alphabetic()}}",
+  "firstname": "Some Name",
+  "lastname": "Some Surname",
   "schoolId": {{$random.integer()}}
 }
 

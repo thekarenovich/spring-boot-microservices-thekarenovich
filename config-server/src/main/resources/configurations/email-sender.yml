@@ -21,6 +21,14 @@ spring:
             enable: true
           auth: true
 management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
   tracing:
     sampling:
       probability: 1.0
+      # Probability of sampling data for tracing (1.0 means 100%).
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

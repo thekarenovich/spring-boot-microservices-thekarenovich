@@ -28,7 +28,15 @@ spring:
       # There are two routes: students and schools, which route requests to the appropriate services on ports 8090 and 8070.
       # For example: GET http://localhost:8222/api/v1/schools -> GET http://localhost:8070/api/v1/schools
 management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
   tracing:
     sampling:
       probability: 1.0
+      # Probability of sampling data for tracing (1.0 means 100%).
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 

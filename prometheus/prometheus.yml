@@ -1,0 +1,23 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'email-sender'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['email-sender:8080']
+        labels:
+          application: 'Email-sender Application'
+  - job_name: 'school'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['school:8080']
+        labels:
+          application: 'School Service Application'
+  - job_name: 'student'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['student:8080']
+        labels:
+          application: 'Student Application'
