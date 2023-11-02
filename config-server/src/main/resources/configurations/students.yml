@@ -9,6 +9,8 @@ server:
 spring:
   application:
     name: students
+  liquibase:
+    enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/students

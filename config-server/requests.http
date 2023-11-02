@@ -40,7 +40,7 @@ Content-Type: application/json
   "email": "Some Mail",
   "firstname": "Some Name",
   "lastname": "Some Surname",
-  "schoolId": 4
+  "schoolId": 1
 }
 
 ### add a new school
