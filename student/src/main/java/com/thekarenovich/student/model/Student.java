@@ -1,4 +1,4 @@
-package com.thekarenovich.student;
+package com.thekarenovich.student.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

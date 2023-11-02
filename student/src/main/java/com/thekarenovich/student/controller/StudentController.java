@@ -1,5 +1,7 @@
-package com.thekarenovich.student;
+package com.thekarenovich.student.controller;
 
+import com.thekarenovich.student.model.Student;
+import com.thekarenovich.student.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +30,17 @@ public class StudentController {
     }
 
     @GetMapping("/school/{school-id}")
-    public ResponseEntity<List<Student>> findAllStudents(
+    public ResponseEntity<List<Student>> findAllStudentsBySchool(
             @PathVariable("school-id") Integer schoolId
     ) {
         return ResponseEntity.ok(service.findAllStudentsBySchool(schoolId));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> findStudentById(
+            @PathVariable("id") Integer id
+    ) {
+        return ResponseEntity.ok(service.findStudentById(id));
+    }
+
 }

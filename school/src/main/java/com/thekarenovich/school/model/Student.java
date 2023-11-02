@@ -1,4 +1,4 @@
-package com.thekarenovich.school;
+package com.thekarenovich.school.model;
 
 import lombok.*;
 

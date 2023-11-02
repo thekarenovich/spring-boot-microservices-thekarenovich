@@ -1,5 +1,6 @@
-package com.thekarenovich.school;
+package com.thekarenovich.school.response;
 
+import com.thekarenovich.school.model.Student;
 import lombok.*;
 
 import java.util.List;
