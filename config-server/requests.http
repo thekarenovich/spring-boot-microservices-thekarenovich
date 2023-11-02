@@ -1,5 +1,9 @@
 # Above all, you must run config, then all the others
 
+### update some field value of student
+GET http://localhost:8222/api/v1/students/1/schoolId/2
+Accept: application/json
+
 ### get a school list, listening port 8070 (school port, not gateway)
 GET http://localhost:8070/api/v1/schools
 Accept: application/json
@@ -33,11 +37,10 @@ POST http://localhost:8222/api/v1/students
 Content-Type: application/json
 
 {
-  "id": {{$random.integer()}},
-  "email": "{{$random.email}}",
+  "email": "Some Mail",
   "firstname": "Some Name",
   "lastname": "Some Surname",
-  "schoolId": {{$random.integer()}}
+  "schoolId": 4
 }
 
 ### add a new school
@@ -45,7 +48,6 @@ POST http://localhost:8222/api/v1/schools
 Content-Type: application/json
 
 {
-  "id": {{$random.integer()}},
-  "name": "{{$random.integer()}}",
-  "email": "{{$random.email}}"
+  "name": "Some Name",
+  "email": "Some Mail"
 }

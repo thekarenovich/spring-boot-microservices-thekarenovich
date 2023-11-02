@@ -15,4 +15,9 @@ public interface StudentService {
     Student findStudentById(Integer id);
 
     List<Student> findStudentBySpecificId(Integer num);
+
+    void updateStudentField(Integer studentId, String fieldName, String newValue);
+
+    void deleteStudentById(Integer studentId);
+
 }

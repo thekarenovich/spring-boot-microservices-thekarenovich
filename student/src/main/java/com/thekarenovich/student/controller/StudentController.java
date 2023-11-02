@@ -36,11 +36,27 @@ public class StudentController {
         return ResponseEntity.ok(service.findAllStudentsBySchool(schoolId));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{student-id}")
     public ResponseEntity<Student> findStudentById(
-            @PathVariable("id") Integer id
+            @PathVariable("student-id") Integer studentId
     ) {
-        return ResponseEntity.ok(service.findStudentById(id));
+        return ResponseEntity.ok(service.findStudentById(studentId));
+    }
+
+    @GetMapping("/{id}/{fieldName}/{newValue}")
+    public void updateStudentField(
+            @PathVariable("id") Integer id,
+            @PathVariable("fieldName") String fieldName,
+            @PathVariable("newValue") String newValue
+    ) {
+        service.updateStudentField(id, fieldName, newValue);
+    }
+
+    @DeleteMapping("/{student-id}")
+    public void deleteStudentById(
+            @PathVariable("student-id") Integer studentId
+    ) {
+        service.deleteStudentById(studentId);
     }
 
 }

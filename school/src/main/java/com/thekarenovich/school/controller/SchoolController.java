@@ -1,7 +1,7 @@
 package com.thekarenovich.school.controller;
 
-import com.thekarenovich.school.response.FullSchoolResponse;
 import com.thekarenovich.school.model.School;
+import com.thekarenovich.school.response.FullSchoolResponse;
 import com.thekarenovich.school.service.SchoolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -42,6 +42,13 @@ public class SchoolController {
             @PathVariable("school-id") Integer schoolId
     ) {
         return ResponseEntity.ok(service.findSchoolById(schoolId));
+    }
+
+    @DeleteMapping("/{school-id}")
+    public void deleteSchoolById(
+            @PathVariable("school-id") Integer schoolId
+    ) {
+        service.deleteSchoolById(schoolId);
     }
 
 }

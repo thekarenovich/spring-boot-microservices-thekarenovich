@@ -19,6 +19,9 @@ spring:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+application:
+  config:
+    schools-url: http://localhost:8222/api/v1/schools
 management:
   endpoints:
     web:

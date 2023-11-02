@@ -14,4 +14,6 @@ public interface SchoolService {
     FullSchoolResponse findSchoolsWithStudents(Integer schoolId);
 
     School findSchoolById(Integer schoolId);
+
+    void deleteSchoolById(Integer schoolId);
 }

@@ -12,4 +12,11 @@ public interface StudentClient {
 
     @GetMapping("/school/{school-id}")
     List<Student> findAllStudentsBySchool(@PathVariable("school-id") Integer schoolId);
+
+    @GetMapping("/{id}/{fieldName}/{newValue}")
+    void updateStudentField(
+            @PathVariable("id") Integer id,
+            @PathVariable("fieldName") String fieldName,
+            @PathVariable("newValue") String newValue
+    );
 }
