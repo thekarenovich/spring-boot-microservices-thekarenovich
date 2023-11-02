@@ -107,12 +107,16 @@ public class StudentServiceImpl implements StudentService {
             }
 
             saveStudentWithoutCheck(student);
-        } else {
+        } else
             throw new IllegalArgumentException("Student not found with ID: " + studentId);
-        }
+
     }
 
     public void deleteStudentById(Integer studentId) {
+        if (findStudentById(studentId).getFirstname().equals("NOT_FOUND"))
+            throw new NotFoundEntityException("ExceptionMessage: student with id %d not exists"
+                    .formatted(studentId));
+
         studentRepository.deleteById(studentId);
     }
 

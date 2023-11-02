@@ -2,6 +2,7 @@ package com.thekarenovich.school.service.impl;
 
 import com.thekarenovich.school.client.StudentClient;
 import com.thekarenovich.school.exception.AlreadyExistEntityException;
+import com.thekarenovich.school.exception.NotFoundEntityException;
 import com.thekarenovich.school.model.School;
 import com.thekarenovich.school.model.Student;
 import com.thekarenovich.school.repository.SchoolRepository;
@@ -28,12 +29,12 @@ public class SchoolServiceImpl implements SchoolService {
 
         var check = schoolRepository.findAll().stream().anyMatch(i -> i.getId() == school.getId());
 
-        if (!check) {
+        if (!check)
             schoolRepository.save(school);
-        } else {
+        else
             throw new AlreadyExistEntityException("ExceptionMessage: school with id %d already exists"
                     .formatted(school.getId()));
-        }
+
 
     }
 
@@ -73,7 +74,13 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     public void deleteSchoolById(Integer schoolId) {
+
+        if (findSchoolById(schoolId).getName().equals("NOT_FOUND"))
+            throw new NotFoundEntityException("ExceptionMessage: school with id %d not exists"
+                    .formatted(schoolId));
+
         List<School> schools = findAllSchools();
+
         List<Student> students = client.findAllStudentsBySchool(schoolId);
 
         Map<Integer, Integer> idCountMap = new HashMap<>();
