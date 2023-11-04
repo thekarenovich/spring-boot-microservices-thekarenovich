@@ -21,18 +21,20 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final SchoolClient client;
 
-    public void saveStudent(Student student) {
+    public Student saveStudent(Student student) {
 
         var checkSchool = client.findSchoolById(student.getSchoolId());
 
         if (!checkSchool.getName().equals("NOT_FOUND")) {
             var checkStudent = studentRepository.findAll().stream().anyMatch(i -> i.getId() == student.getId());
 
-            if (!checkStudent)
+            if (!checkStudent) {
                 studentRepository.save(student);
-            else
+                return student;
+            } else
                 throw new AlreadyExistEntityException("ExceptionMessage: student with id %d already exists"
                         .formatted(student.getId()));
+
         } else
             throw new NotFoundEntityException("ExceptionMessage: school with id %d not exists"
                     .formatted(student.getSchoolId()));
@@ -83,7 +85,7 @@ public class StudentServiceImpl implements StudentService {
                 .collect(Collectors.toList());
     }
 
-    public void updateStudentField(Integer studentId, String fieldName, String newValue) {
+    public Student updateStudentField(Integer studentId, String fieldName, String newValue) {
         var studentOptional = studentRepository.findById(studentId);
 
         if (studentOptional.isPresent()) {
@@ -105,19 +107,21 @@ public class StudentServiceImpl implements StudentService {
                 default:
                     throw new IllegalArgumentException("Invalid field name: " + fieldName);
             }
-
             saveStudentWithoutCheck(student);
+            return student;
         } else
             throw new IllegalArgumentException("Student not found with ID: " + studentId);
 
     }
 
-    public void deleteStudentById(Integer studentId) {
+    public Student deleteStudentById(Integer studentId) {
         if (findStudentById(studentId).getFirstname().equals("NOT_FOUND"))
             throw new NotFoundEntityException("ExceptionMessage: student with id %d not exists"
                     .formatted(studentId));
 
+        var deletedStudent = findStudentById(studentId);
         studentRepository.deleteById(studentId);
+        return deletedStudent;
     }
 
 }

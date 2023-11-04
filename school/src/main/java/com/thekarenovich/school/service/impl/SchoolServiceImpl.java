@@ -25,13 +25,14 @@ public class SchoolServiceImpl implements SchoolService {
     private final SchoolRepository schoolRepository;
     private final StudentClient client;
 
-    public void saveSchool(School school) {
+    public School saveSchool(School school) {
 
         var check = schoolRepository.findAll().stream().anyMatch(i -> i.getId() == school.getId());
 
-        if (!check)
+        if (!check) {
             schoolRepository.save(school);
-        else
+            return school;
+        } else
             throw new AlreadyExistEntityException("ExceptionMessage: school with id %d already exists"
                     .formatted(school.getId()));
 
@@ -73,7 +74,7 @@ public class SchoolServiceImpl implements SchoolService {
                 );
     }
 
-    public void deleteSchoolById(Integer schoolId) {
+    public School deleteSchoolById(Integer schoolId) {
 
         if (findSchoolById(schoolId).getName().equals("NOT_FOUND"))
             throw new NotFoundEntityException("ExceptionMessage: school with id %d not exists"
@@ -119,6 +120,8 @@ public class SchoolServiceImpl implements SchoolService {
 
         }
 
+        var deletedSchool = findSchoolById(schoolId);
         schoolRepository.deleteById(schoolId);
+        return deletedSchool;
     }
 }

@@ -1,5 +1,13 @@
 # Above all, you must run config, then all the others
 
+### delete the school
+DELETE http://localhost:8222/api/v1/schools/1
+Accept: application/json
+
+### delete the student
+DELETE http://localhost:8222/api/v1/students/1
+Accept: application/json
+
 ### update some field value of student
 GET http://localhost:8222/api/v1/students/1/schoolId/2
 Accept: application/json

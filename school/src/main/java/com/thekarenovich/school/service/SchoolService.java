@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SchoolService {
 
-    void saveSchool(School school);
+    School saveSchool(School school);
 
     List<School> findAllSchools();
 
@@ -15,5 +15,5 @@ public interface SchoolService {
 
     School findSchoolById(Integer schoolId);
 
-    void deleteSchoolById(Integer schoolId);
+    School deleteSchoolById(Integer schoolId);
 }

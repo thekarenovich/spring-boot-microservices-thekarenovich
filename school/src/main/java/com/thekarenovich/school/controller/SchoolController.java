@@ -19,10 +19,11 @@ public class SchoolController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(
+    public ResponseEntity save(
             @RequestBody School school
     ) {
-        service.saveSchool(school);
+        var savedSchool = service.saveSchool(school);
+        return new ResponseEntity(savedSchool, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -45,10 +46,11 @@ public class SchoolController {
     }
 
     @DeleteMapping("/{school-id}")
-    public void deleteSchoolById(
+    public ResponseEntity deleteSchoolById(
             @PathVariable("school-id") Integer schoolId
     ) {
-        service.deleteSchoolById(schoolId);
+        var deletedSchool = service.deleteSchoolById(schoolId);
+        return new ResponseEntity(deletedSchool, HttpStatus.NO_CONTENT);
     }
 
 }

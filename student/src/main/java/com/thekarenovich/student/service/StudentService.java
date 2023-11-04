@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    void saveStudent(Student student);
+    Student saveStudent(Student student);
 
     List<Student> findAllStudents();
 
@@ -16,8 +16,8 @@ public interface StudentService {
 
     List<Student> findStudentBySpecificId(Integer num);
 
-    void updateStudentField(Integer studentId, String fieldName, String newValue);
+    Student updateStudentField(Integer studentId, String fieldName, String newValue);
 
-    void deleteStudentById(Integer studentId);
+    Student deleteStudentById(Integer studentId);
 
 }

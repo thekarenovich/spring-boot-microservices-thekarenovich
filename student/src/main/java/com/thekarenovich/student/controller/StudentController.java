@@ -18,10 +18,11 @@ public class StudentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(
+    public ResponseEntity save(
             @RequestBody Student student
     ) {
-        service.saveStudent(student);
+        var savedStudent = service.saveStudent(student);
+        return new ResponseEntity(savedStudent, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -44,19 +45,21 @@ public class StudentController {
     }
 
     @GetMapping("/{id}/{fieldName}/{newValue}")
-    public void updateStudentField(
+    public ResponseEntity updateStudentField(
             @PathVariable("id") Integer id,
             @PathVariable("fieldName") String fieldName,
             @PathVariable("newValue") String newValue
     ) {
-        service.updateStudentField(id, fieldName, newValue);
+        var updatedStudent = service.updateStudentField(id, fieldName, newValue);
+        return new ResponseEntity(updatedStudent, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{student-id}")
-    public void deleteStudentById(
+    @DeleteMapping(path = "/{student-id}")
+    public ResponseEntity deleteStudentById(
             @PathVariable("student-id") Integer studentId
     ) {
-        service.deleteStudentById(studentId);
+        var deletedStudent = service.deleteStudentById(studentId);
+        return new ResponseEntity(deletedStudent, HttpStatus.NO_CONTENT);
     }
 
 }
